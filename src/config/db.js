@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
+
 const connectDB = async () => {
- try {
- const conn = await mongoose.connect(process.env.MONGODB_URI);
- console.log(`✅ [Database] Đã kết nối MongoDB Atlas thành công:
-${conn.connection.host}`);
- } catch (error) {
- console.error(`❌ [Database] Lỗi kết nối CSDL: ${error.message}`);
- process.exit(1);
- }
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('✅ Đã kết nối MongoDB Atlas.');
+    } catch (error) {
+        console.error('❌ Lỗi kết nối CSDL:', error.message);
+    }
 };
+
 module.exports = connectDB;
